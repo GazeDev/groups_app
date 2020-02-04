@@ -1,0 +1,16 @@
+  <section class="header">
+    <h2>Welcome to <br>{{ env.siteName }}</h2>
+
+    <h3>Powered by <a href="https://housingdb.org" target="_blank">HousingDB</a></h3>
+
+  </section>
+
+  <section *ngIf="!authService.isAuthenticated">
+    <h2>Get More from {{ env.siteName}}</h2>
+    <button routerLink="#" mat-raised-button color="primary" (click)="doLogin()">Log in/ Sign up Now</button>
+  </section>
+
+  <section *ngIf="authService.isAuthenticated">
+    <h2>Find your <abbr title="etc">stuff</abbr> here</h2>
+    <button routerLink="/dashboard" mat-raised-button color="primary">Dashboard</button>
+  </section>

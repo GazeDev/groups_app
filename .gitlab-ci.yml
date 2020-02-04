@@ -1,0 +1,14 @@
+image: node:10.15.3
+
+variables:
+# See Gitlab CI
+
+test build:
+  stage: test
+  script:
+  - npm install
+  - ls -lah
+  - which bash
+  - bash -c "./set-env.sh -e prod"
+  - npm run build
+  - echo "Build Successful"

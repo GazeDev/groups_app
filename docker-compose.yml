@@ -1,0 +1,17 @@
+version: '3'
+services:
+  app:
+    build: .
+    hostname: housing
+    command: ["bash", "-c", "./set-env.sh -e dev && npm run start -- --host=0.0.0.0"]
+    # command: ["bash", "-c", "./set-env.sh -e prod && npm run build"]
+    env_file:
+      - variables.env
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "4202:4200"
+networks:
+  default:
+    driver: bridge

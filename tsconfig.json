@@ -1,0 +1,31 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "_components/*": [ "src/app/_components/*" ],
+      "_environment": [ "src/environments/environment" ],
+      "_helpers/*": [ "src/app/_helpers/*" ],
+      "_models/*": [ "src/app/_models/*" ],
+      "_pages/*": [ "src/app/_pages/*" ],
+      "_services/*": [ "src/app/_services/*" ],
+      "_utils/*": [ "src/app/_utils/*" ],
+      "_validators/*": [ "src/app/_validators/*" ]
+    },
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+:host {
+  text-align: center;
+}
+
+.add-types {
+  display: flex;
+  flex-flow:row wrap;
+  justify-content: space-around;
+
+  .add-type {
+    max-width: 20rem;
+  }
+}
+
+section {
+  max-width: 82.5rem;
+  padding: .5rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+}
+
+section.header {
+  margin-left: -1rem;
+  margin-right: -1rem;
+  width: auto;
+  max-width: unset;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  h2 {
+    font-size: 3rem;
+    line-height: 1.6;
+  }
+  .actions {
+    margin-top: 3rem;
+  }
+}
+
+.mat-raised-button {
+  margin-right: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 2rem;
+}
