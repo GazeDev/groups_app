@@ -48,3 +48,7 @@ To open a bash shell in a container:
 
 Good guide for git commits:
 https://chris.beams.io/posts/git-commit/
+
+# Deploying
+
+This repo is mirrored to Gitlab and the master branch is deployed with Netlify
