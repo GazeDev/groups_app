@@ -13,6 +13,7 @@
       <a mat-list-item routerLink="#" *ngIf="authService.isAuthenticated" (click)="accountManagement()">My Account</a>
       <a mat-list-item routerLink="#" *ngIf="authService.isAuthenticated" (click)="doLogout()">Log out</a>
       <a mat-list-item routerLink="#" *ngIf="!authService.isAuthenticated" (click)="doLogin()">Log in/Sign up</a>
+      <a mat-list-item routerLink="/group" *ngIf="authService.isAuthenticated">My groups</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content role="main">
