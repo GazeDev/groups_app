@@ -4,13 +4,17 @@ import { FormsModule } from '@angular/forms';
 import { AngularMaterialModule } from '_components/angular-material.module';
 import { RouterModule } from '@angular/router';
 
-import { GroupPage } from './group.page';
+import { GroupPage, CreateGroupDialog } from './group.page';
+import {MatDialogModule} from '@angular/material/dialog';
+
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     AngularMaterialModule,
+    MatDialogModule,
     RouterModule.forChild([
       {
         path: 'group',
@@ -18,6 +22,7 @@ import { GroupPage } from './group.page';
       }
     ])
   ],
-  declarations: [GroupPage]
+  entryComponents: [CreateGroupDialog],
+  declarations: [GroupPage, CreateGroupDialog]
 })
 export class GroupPageModule {}
