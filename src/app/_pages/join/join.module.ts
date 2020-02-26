@@ -5,6 +5,7 @@ import { AngularMaterialModule } from '_components/angular-material.module';
 import { RouterModule } from '@angular/router';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatButtonModule} from '@angular/material/button';
+import {MatListModule} from '@angular/material/list';
 
 import { JoinPage } from './join.page';
 
@@ -14,6 +15,7 @@ import { JoinPage } from './join.page';
     AngularMaterialModule,
     MatGridListModule,
     MatButtonModule,
+    MatListModule,
     RouterModule.forChild([
       {
         path: 'join',
@@ -23,4 +25,6 @@ import { JoinPage } from './join.page';
   ],
   declarations: [JoinPage],
 })
-export class JoinPageModule {}
+export class JoinPageModule {
+    housingGroups: string[] = ['Pittsburgh', 'Oakland', 'Shadyside', 'Squirrel Hill', 'Lawrenceville', 'Southside', 'East Liberty'];
+ }

@@ -7,6 +7,7 @@ import { ApiService } from '_services/api.service';
   styleUrls: ['join.page.scss'],
 })
 export class JoinPage {
+  public housingGroups: string[] = ['Pittsburgh', 'Oakland', 'Shadyside', 'Squirrel Hill', 'Lawrenceville', 'Southside', 'East Liberty'];
 
   constructor(
     private apiService: ApiService,
