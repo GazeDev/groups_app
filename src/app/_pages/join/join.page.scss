@@ -13,10 +13,11 @@ button {
 }
 
 mat-selection-list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 1em;
+    padding-right: 1.5em;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 
 mat-selection-list>* {
@@ -35,12 +36,25 @@ mat-selection-list>* {
     height: 15vh;
 }
 
-.mat-list-option:hover, .mat-list-option.mat-list-item-focus, .active, mat-list-option[aria-selected="true"] {
+.mat-list-option.mat-list-item-focus, .active, mat-list-option[aria-selected="true"] {
     background: #0277bd !important;
+}
+
+.mat-list-option:hover {
+    background-color: rgba($color: #0277bd, $alpha: .5);
 }
 
 :host {
     ::ng-deep.mat-pseudo-checkbox{
       display: none !important;
     }
+}
+
+.mat-selection-list:focus {
+    outline-width: 0;
+}
+
+.mat-raised-button {
+    grid-row: 4;
+    grid-column: 6;
 }
