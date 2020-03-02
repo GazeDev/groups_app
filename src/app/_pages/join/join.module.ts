@@ -26,5 +26,4 @@ import { JoinPage } from './join.page';
   declarations: [JoinPage],
 })
 export class JoinPageModule {
-    housingGroups: string[] = ['Pittsburgh', 'Oakland', 'Shadyside', 'Squirrel Hill', 'Lawrenceville', 'Southside', 'East Liberty'];
- }
+}

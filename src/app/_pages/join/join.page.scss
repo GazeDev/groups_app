@@ -3,7 +3,7 @@ mat-grid-tile {
     border-radius: 5px;
 }
 
-button { 
+button {
     position: absolute; 
     bottom: 5%;
     right: 5%;
@@ -14,10 +14,9 @@ button {
 
 mat-selection-list {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill,minmax(250px, 1fr));
     column-gap: 1em;
     padding-right: 1.5em;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 
 mat-selection-list>* {
@@ -34,6 +33,7 @@ mat-selection-list>* {
     align-content: flex-start;
     text-align: center;
     height: 15vh;
+    min-height: 50px;
 }
 
 .mat-list-option.mat-list-item-focus, .active, mat-list-option[aria-selected="true"] {
@@ -41,7 +41,7 @@ mat-selection-list>* {
 }
 
 .mat-list-option:hover {
-    background-color: rgba($color: #0277bd, $alpha: .5);
+    background-color: rgba($color: #3f3f3f, $alpha: .4);
 }
 
 :host {
