@@ -5,11 +5,15 @@ mat-grid-tile {
 
 button {
     position: absolute; 
-    bottom: 5%;
-    right: 5%;
+    bottom: 30px;
+    right: 30px;
     border: 0px solid #d6d6d6;
     width: 150px;
     height: 50px;
+}
+
+.group-selection {
+    margin-bottom: 80px;
 }
 
 mat-selection-list {
@@ -44,10 +48,14 @@ mat-selection-list>* {
     background-color: rgba($color: #3f3f3f, $alpha: .4);
 }
 
-:host {
-    ::ng-deep.mat-pseudo-checkbox{
-      display: none !important;
-    }
+// :host {
+//     ::ng-deep.mat-pseudo-checkbox{
+//       display: none !important;
+//     }
+// }
+
+input[checkbox] {
+    display: none !important;
 }
 
 .mat-selection-list:focus {
