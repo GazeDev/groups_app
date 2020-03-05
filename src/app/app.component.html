@@ -9,6 +9,7 @@
     </mat-toolbar>
     <mat-nav-list (click)="sidenav.close()">
       <a mat-list-item routerLink="/dashboard" *ngIf="authService.isAuthenticated">Dashboard</a>
+      <a mat-list-item routerLink="/join" *ngIf="authService.isAuthenticated">Join Groups</a>
       <mat-divider></mat-divider>
       <a mat-list-item routerLink="#" *ngIf="authService.isAuthenticated" (click)="accountManagement()">My Account</a>
       <a mat-list-item routerLink="#" *ngIf="authService.isAuthenticated" (click)="doLogout()">Log out</a>
