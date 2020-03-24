@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Property } from '_models/property.model';
 import { Landlord } from '_models/landlord.model';
+// import { Group } from '_models/group.model';
 import { emptyish } from '_helpers/emptyish';
 
 
@@ -27,6 +28,7 @@ export class ApiService {
     return this.apiUrl;
   }
 
+
   /*
   * Backend Status
   */
@@ -34,6 +36,7 @@ export class ApiService {
   checkStatus() {
     return this.httpClient.get<any>(`${this.apiUrl}/`);
   }
+
 
   /*
   * Account Methods
@@ -62,6 +65,23 @@ export class ApiService {
 
   getAccountReviews() {
     return this.httpClient.get<any>(`${this.apiUrl}/accounts/reviews`);
+  }
+
+
+  /*
+  * Group Methods
+  */
+
+  getGroups() {
+    return  this.httpClient.get<any>(`${this.apiUrl}/groups`);
+  }
+
+  getGroups(groupId) {
+    return  this.httpClient.get<any>(`${this.apiUrl}/groups/${groupId}`);
+  }
+
+  createGroup() {
+    return this.httpClient.post<any>(`${this.apiUrl}/groups`, '');
   }
 
 }
