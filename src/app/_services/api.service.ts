@@ -73,15 +73,32 @@ export class ApiService {
   */
 
   getGroups() {
-    return  this.httpClient.get<any>(`${this.apiUrl}/groups`);
+    return this.httpClient.get<any>(`${this.apiUrl}/groups`);
   }
 
   getGroups(groupId) {
-    return  this.httpClient.get<any>(`${this.apiUrl}/groups/${groupId}`);
+    return this.httpClient.get<any>(`${this.apiUrl}/groups/${groupId}`);
   }
 
   createGroup() {
     return this.httpClient.post<any>(`${this.apiUrl}/groups`, '');
   }
+
+
+  /*
+  * Post Methods
+  */
+
+  getPosts(postId) {
+    return this.httpClient.get<any>(`${this.apiUrl}/posts`);
+  }
+
+  createPost(groupId) {
+     return this.httpClient.post<any>(`${this.apiUrl}/groups/${groupId}/posts`, '');
+  }
+
+  /*
+  *
+  */
 
 }
