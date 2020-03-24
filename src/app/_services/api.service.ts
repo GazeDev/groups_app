@@ -72,8 +72,20 @@ export class ApiService {
   * Group Methods
   */
 
-  getGroups() {
-    return this.httpClient.get<any>(`${this.apiUrl}/groups`);
+  getGroups(options ={}) {
+    let params = {};
+    for (var key in options) {
+      if (
+        emptyish(options[key])
+        || options[key] == undefined
+      ) {
+        continue;
+      }
+      params[key] = options[key];
+    }
+    return this.httpClient.get<any>(`${this.apiUrl}/groups`, {
+      params: params,
+    });
   }
 
   getGroups(groupId) {
