@@ -101,16 +101,28 @@ export class ApiService {
   * Post Methods
   */
 
-  getPosts(postId) {
-    return this.httpClient.get<any>(`${this.apiUrl}/posts`);
+  getPost(postId) {
+    return this.httpClient.get<any>(`${this.apiUrl}/posts/${postId}`);
   }
 
   createPost(groupId) {
      return this.httpClient.post<any>(`${this.apiUrl}/groups/${groupId}/posts`, '');
   }
 
+
   /*
-  *
+  * Comment Methods
   */
 
+  getComments() {
+    return this.httpClient.get<any>(`${this.apiUrl}/comments`);
+  }
+
+  getComments(commentId) {
+    return this.httpClient.get<any>(`${this.apiUrl}/comments/${commentId}`);
+  }
+
+  createComment(postId) {
+     return this.httpClient.post<any>(`${this.apiUrl}/posts/${postId}/comment`, '');
+  }
 }
