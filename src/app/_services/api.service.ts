@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Property } from '_models/property.model';
 import { Landlord } from '_models/landlord.model';
-// import { Group } from '_models/group.model';
+import { Group } from '_models/group.model';
 import { emptyish } from '_helpers/emptyish';
 
 
@@ -92,8 +92,8 @@ export class ApiService {
     return this.httpClient.get<any>(`${this.apiUrl}/groups/${groupId}`);
   }
 
-  createGroup() {
-    return this.httpClient.post<any>(`${this.apiUrl}/groups`, '');
+  createGroup(group: Group) {
+    return this.httpClient.post<any>(`${this.apiUrl}/groups`, group, {observe: 'response'});
   }
 
 

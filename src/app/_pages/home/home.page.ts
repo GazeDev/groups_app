@@ -19,12 +19,12 @@ export class HomePage {
     public apiService: ApiService,
   ) {
     this.env = environment;
-    this.apiService.getGroups().subscribe( res => {
-      this.groups = res;
-    },
-    err => {
-      console.log('err', err);
-    });
+    // this.apiService.getGroups().subscribe( res => {
+    //   this.groups = res;
+    // },
+    // err => {
+    //   console.log('err', err);
+    // });
   }
 
   async doLogin() {
