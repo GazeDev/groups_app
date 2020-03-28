@@ -88,7 +88,7 @@ export class ApiService {
     });
   }
 
-  getGroups(groupId) {
+  getGroup(groupId) {
     return this.httpClient.get<any>(`${this.apiUrl}/groups/${groupId}`);
   }
 
@@ -118,7 +118,7 @@ export class ApiService {
     return this.httpClient.get<any>(`${this.apiUrl}/comments`);
   }
 
-  getComments(commentId) {
+  getComment(commentId) {
     return this.httpClient.get<any>(`${this.apiUrl}/comments/${commentId}`);
   }
 
