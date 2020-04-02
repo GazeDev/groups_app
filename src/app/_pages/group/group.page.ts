@@ -4,6 +4,8 @@ import { AuthenticationService } from '_services/index';
 
 import { ApiService } from '_services/api.service';
 
+import { Group } from '_models/group.model';
+
 import { environment } from '_environment';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -20,6 +22,7 @@ export interface DialogData {
 })
 export class GroupPage {
   public env: any;
+  public groups: any = [];
   name: string;
   description: string;
 
@@ -29,6 +32,14 @@ export class GroupPage {
     public apiService: ApiService,
   ) {
     this.env = environment;
+
+    // Gets the group from the API and assigned them to this.groups
+    this.apiService.getGroups().subscribe( res => {
+      this.groups = res;
+    },
+    err => {
+      console.log('err', err);
+    });
   }
 
   openDialog(): void {
@@ -43,6 +54,48 @@ export class GroupPage {
     });
   }
 
+  async doLogin() {
+    await this.authService.login();
+  }
+
+}
+
+@Component({
+  selector: 'create-group-dialog',
+  templateUrl: 'group.page.dialog.html',
+})
+export class CreateGroupDialog {
+
+  constructor(
+    public apiService: ApiService,
+    public dialogRef: MatDialogRef<CreateGroupDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) {  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  createGroup(group): void {
+    this.apiService.createGroup(group).subscribe(
+      groupResponse => {
+        let groupId = groupResponse.body.id; // Unsure if we need body
+        // this.displayLandlordCreatedToast(landlordId); // Leave for later
+        // this.form.reset();
+        // this.formDirective.resetForm();
+      },
+      // err => {
+      //   if (err.status == 422) {
+      //     this.alertService.action({
+      //       data: {
+      //         message: 'A group with that title already exists.',
+      //       }
+      //     });
+      //   }
+      // });
+    )
+  }
+
   submit() {
    // this.currentlySubmitting = true;
    // this.submitAttempt = true;
@@ -53,15 +106,16 @@ export class GroupPage {
    // }
 
    // let formValues = this.form.value;
-   let group: any = {};
+   let group: Group = {};
 
-   group['title'] = this.name;
-   group['short_description'] = this.description;
-   group['description'] = this.description;
+   group['title'] = this.data.name;
+   group['short_description'] = this.data.description;
+   group['description'] = this.data.description;
 
    this.apiService.getAccount().subscribe(
      response => {
        group.admin = response.id;
+       console.log(group.admin);
      },
    );
    this.createGroup(group);
@@ -98,45 +152,5 @@ export class GroupPage {
    //   this.createGroup(group);
    // }
  }
-
-  createGroup(group): void {
-    this.apiService.createGroup(group).subscribe(
-      groupResponse => {
-        let groupId = groupResponse.body.id; // Unsure if we need body
-        // this.displayLandlordCreatedToast(landlordId); // Leave for later
-        // this.form.reset();
-        // this.formDirective.resetForm();
-      },
-      // err => {
-      //   if (err.status == 422) {
-      //     this.alertService.action({
-      //       data: {
-      //         message: 'A group with that title already exists.',
-      //       }
-      //     });
-      //   }
-      // });
-    )
-  }
-
-  async doLogin() {
-    await this.authService.login();
-  }
-
-}
-
-@Component({
-  selector: 'create-group-dialog',
-  templateUrl: 'group.page.dialog.html',
-})
-export class CreateGroupDialog {
-
-  constructor(
-    public dialogRef: MatDialogRef<CreateGroupDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
 
 }
