@@ -114,11 +114,13 @@ export class CreateGroupDialog {
 
    this.apiService.getAccount().subscribe(
      response => {
-       group.admin = response.id;
-       console.log(group.admin);
+       group['AdminId'] = response.id;
+       this.createGroup(group);
      },
    );
-   this.createGroup(group);
+   //TEMPORARY MESSAGE: DON"T KNOW IF WE SHOULD HAVE AN CATCH HERE FOR IF THERE IS NO USER
+
+
    //
    // for (var key in formValues) {
    //   if (
