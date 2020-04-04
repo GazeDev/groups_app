@@ -11,7 +11,8 @@ import { environment } from '_environment';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 export interface DialogData {
-  name: string;
+  title: string;
+  short_description: string;
   description: string;
 }
 
