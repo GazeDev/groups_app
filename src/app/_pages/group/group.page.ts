@@ -108,8 +108,8 @@ export class CreateGroupDialog {
    // let formValues = this.form.value;
    let group: Group = {};
 
-   group['title'] = this.data.name;
-   group['short_description'] = this.data.description;
+   group['title'] = this.data.title;
+   group['short_description'] = this.data.short_description;
    group['description'] = this.data.description;
 
    this.apiService.getAccount().subscribe(
