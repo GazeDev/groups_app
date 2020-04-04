@@ -2,6 +2,9 @@
   <mat-sidenav id="sidenav" mode="side" opened>
     <h2>Your Groups</h2>
     <mat-list id="yourGroupsSidebar">
+      <p *ngIf="groups.length === 0">
+        You don't have any landlords right now, you can click above to add one.
+      </p>
       <div *ngFor="let group of groups">
         <mat-list-item>{{ group.title }}</mat-list-item>
         <mat-divider></mat-divider>
