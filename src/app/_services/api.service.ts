@@ -101,8 +101,28 @@ export class ApiService {
   * Post Methods
   */
 
+  getPosts(options = {}) {
+    let params = {};
+    for (var key in options) {
+      if (
+        emptyish(options[key])
+        || options[key] == undefined
+      ) {
+        continue;
+      }
+      params[key] = options[key];
+    }
+    return this.httpClient.get<any>(`${this.apiUrl}/posts`, {
+      params: params,
+    });
+  }
+
   getPost(postId) {
     return this.httpClient.get<any>(`${this.apiUrl}/posts/${postId}`);
+  }
+
+  getGroupPosts(groupId) {
+    return this.httpClient.get<any>(`${this.apiUrl}/groups/${groupId}/posts`);
   }
 
   createPost(groupId) {
@@ -115,11 +135,27 @@ export class ApiService {
   */
 
   getComments() {
-    return this.httpClient.get<any>(`${this.apiUrl}/comments`);
+    let params = {};
+    for (var key in options) {
+      if (
+        emptyish(options[key])
+        || options[key] == undefined
+      ) {
+        continue;
+      }
+      params[key] = options[key];
+    }
+    return this.httpClient.get<any>(`${this.apiUrl}/comments`, {
+      params: params,
+    });
   }
 
   getComment(commentId) {
     return this.httpClient.get<any>(`${this.apiUrl}/comments/${commentId}`);
+  }
+
+  getPostComments(postId) {
+    return this.httpClient.get<any>(`${this.apiUrl}/posts/${postId}/comments`);
   }
 
   createComment(postId) {
