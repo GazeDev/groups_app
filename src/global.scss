@@ -211,3 +211,7 @@ mat-card {
     margin-bottom: 2rem;
   }
 }
+
+.hide-checkbox .mat-pseudo-checkbox {
+  display: none !important;
+}
