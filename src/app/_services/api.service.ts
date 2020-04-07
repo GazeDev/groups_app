@@ -52,7 +52,7 @@ export class ApiService {
   }
 
   createAccount() {
-    return this.httpClient.post<any>(`${this.apiUrl}/accounts`, account, {observe: 'response'});
+    return this.httpClient.post<any>(`${this.apiUrl}/accounts`);
   }
 
   getAccountLandlords() {
@@ -80,8 +80,8 @@ export class ApiService {
     return this.httpClient.get<any>(`${this.apiUrl}/groups/${groupId}`);
   }
 
-  createGroup() {
-    return this.httpClient.post<any>(`${this.apiUrl}/groups`, group, {observe: 'response'});
+  createGroup(group) {
+    return this.httpClient.post<any>(`${this.apiUrl}/groups`, group);
   }
 
 
@@ -101,8 +101,8 @@ export class ApiService {
     return this.httpClient.get<any>(`${this.apiUrl}/groups/${groupId}/posts`);
   }
 
-  createPost(groupId) {
-     return this.httpClient.post<any>(`${this.apiUrl}/groups/${groupId}/posts`, post, {observe: 'response'});
+  createPost(post, groupId) {
+     return this.httpClient.post<any>(`${this.apiUrl}/groups/${groupId}/posts`, post);
   }
 
 
@@ -122,7 +122,7 @@ export class ApiService {
     return this.httpClient.get<any>(`${this.apiUrl}/posts/${postId}/comments`);
   }
 
-  createComment(postId) {
-     return this.httpClient.post<any>(`${this.apiUrl}/posts/${postId}/comment`, comment, {observe: 'response'});
+  createComment(comment, postId) {
+     return this.httpClient.post<any>(`${this.apiUrl}/posts/${postId}/comment`, comment);
   }
 }
