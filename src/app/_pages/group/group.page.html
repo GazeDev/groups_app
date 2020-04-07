@@ -17,7 +17,7 @@
   <mat-sidenav-content id="main-container">
     <h2>Pittsburgh Group</h2>
     <div class="example-container">
-      <form (post)="post()" [formGroup]="form" #ngFormDirective="ngForm" [ngClass]="{'submit-attempt': submitAttempt}">
+      <form (submit)="post()" [formGroup]="form" #ngFormDirective="ngForm" [ngClass]="{'submit-attempt': submitAttempt}">
         <mat-form-field appearance="fill">
           <mat-label>Title</mat-label>
           <input matInput formControlName="title">
@@ -29,7 +29,7 @@
         </mat-form-field>
 
         <div class="form-actions">
-          <button mat-raised-button color="primary" type="post">Post</button>
+          <button mat-raised-button color="primary" type="submit">Post</button>
         </div>
       </form>
 
