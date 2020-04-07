@@ -97,6 +97,10 @@ export class ApiService {
     return this.httpClient.get<any>(`${this.apiUrl}/posts/${postId}`);
   }
 
+  getGroupPosts(groupId) {
+    return this.httpClient.get<any>(`${this.apiUrl}/groups/${groupId}/posts`);
+  }
+
   createPost(groupId) {
      return this.httpClient.post<any>(`${this.apiUrl}/groups/${groupId}/posts`, post, {observe: 'response'});
   }
@@ -112,6 +116,10 @@ export class ApiService {
 
   getComment(commentId) {
     return this.httpClient.get<any>(`${this.apiUrl}/comments/${commentId}`);
+  }
+
+  getPostComments(postId) {
+    return this.httpClient.get<any>(`${this.apiUrl}/posts/${postId}/comments`);
   }
 
   createComment(postId) {
