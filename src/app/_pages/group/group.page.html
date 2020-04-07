@@ -17,18 +17,20 @@
   <mat-sidenav-content id="main-container">
     <h2>Pittsburgh Group</h2>
     <div class="example-container">
-      <form class="new-post-form">
+      <form (post)="post()" [formGroup]="form" #ngFormDirective="ngForm" [ngClass]="{'submit-attempt': submitAttempt}">
         <mat-form-field appearance="fill">
           <mat-label>Title</mat-label>
-          <input matInput>
+          <input matInput [(ngModel)]="data.title">
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
           <mat-label>What's on your mind?</mat-label>
-          <textarea matInput></textarea>
+          <textarea matInput [(ngModel)]="data.body"></textarea>
         </mat-form-field>
 
-        <button mat-raised-button color="primary">Post</button>
+        <div class="form-actions">
+          <button mat-raised-button color="primary" type="post">Post</button>
+        </div>
       </form>
 
       <mat-card class="post">

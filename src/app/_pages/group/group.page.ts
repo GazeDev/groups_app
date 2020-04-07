@@ -1,14 +1,11 @@
-import { Component, Inject } from '@angular/core';
-
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '_services/index';
-
 import { ApiService } from '_services/api.service';
-
 import { Group } from '_models/group.model';
-
 import { environment } from '_environment';
-
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 export interface DialogData {
   title: string;
@@ -58,7 +55,52 @@ export class GroupPage {
   async doLogin() {
     await this.authService.login();
   }
+}
 
+@Component({
+  selector: 'create-post-dialog',
+  templateUrl: 'group.page.html',
+  styleUrls: ['group.page.scss'],
+})
+export class CreatePostForm implements OnInit {
+  @ViewChild('ngFormDirective') formDirective;
+  public form: FormGroup;
+
+  public userAccount: any;
+  public groupId: any;
+  public env: any;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    public authenticationService: AuthenticationService,
+    public apiService: ApiService,
+  ) {
+    this.env = environment;
+    this.form = this.formBuilder.group({
+      title: [''],
+      body: [''],
+    });
+  }
+
+  async ngOnInit() {
+    await this.authenticationService.checkLogin();
+    if (this.authenticationService.isAuthenticated) {
+      this.getAccount();
+    }
+    this.route.paramMap.subscribe(params => {
+      this.groupId = params.get('id');
+    });
+  }
+
+  getAccount() {
+    this.apiService.getAccount().subscribe(res => {
+      this.userAccount = res;
+    });
+  }
+
+  post() {
+  }
 }
 
 @Component({
