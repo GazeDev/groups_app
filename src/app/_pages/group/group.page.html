@@ -20,12 +20,12 @@
       <form (post)="post()" [formGroup]="form" #ngFormDirective="ngForm" [ngClass]="{'submit-attempt': submitAttempt}">
         <mat-form-field appearance="fill">
           <mat-label>Title</mat-label>
-          <input matInput [(ngModel)]="data.title">
+          <input matInput formControlName="title">
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
           <mat-label>What's on your mind?</mat-label>
-          <textarea matInput [(ngModel)]="data.body"></textarea>
+          <textarea matInput formControlName="body"></textarea>
         </mat-form-field>
 
         <div class="form-actions">

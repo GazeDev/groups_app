@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularMaterialModule } from '_components/angular-material.module';
 import { RouterModule } from '@angular/router';
 
-import { GroupPage, CreateGroupDialog, CreatePostForm } from './group.page';
+import { GroupPage, CreateGroupDialog} from './group.page';
 import {MatDialogModule} from '@angular/material/dialog';
 
 
@@ -23,7 +23,7 @@ import {MatDialogModule} from '@angular/material/dialog';
       }
     ])
   ],
-  entryComponents: [CreateGroupDialog, CreatePostForm],
-  declarations: [GroupPage, CreateGroupDialog, CreatePostForm],
+  entryComponents: [CreateGroupDialog],
+  declarations: [GroupPage, CreateGroupDialog],
 })
 export class GroupPageModule {}

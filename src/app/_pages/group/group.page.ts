@@ -19,17 +19,24 @@ export interface DialogData {
   styleUrls: ['group.page.scss'],
 })
 export class GroupPage {
+  @ViewChild('ngFormDirective') formDirective;
+  public form: FormGroup;
   public env: any;
   public groups: any = [];
   name: string;
   description: string;
 
   constructor(
+    private formBuilder: FormBuilder,
     public dialog: MatDialog,
     public authService: AuthenticationService,
     public apiService: ApiService,
   ) {
     this.env = environment;
+    this.form = this.formBuilder.group({
+      title: [''],
+      body: [''],
+    });
 
     // Gets the group from the API and assigned them to this.groups
     this.apiService.getGroups().subscribe( res => {
@@ -54,49 +61,6 @@ export class GroupPage {
 
   async doLogin() {
     await this.authService.login();
-  }
-}
-
-@Component({
-  selector: 'create-post-dialog',
-  templateUrl: 'group.page.html',
-  styleUrls: ['group.page.scss'],
-})
-export class CreatePostForm implements OnInit {
-  @ViewChild('ngFormDirective') formDirective;
-  public form: FormGroup;
-
-  public userAccount: any;
-  public groupId: any;
-  public env: any;
-
-  constructor(
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    public authenticationService: AuthenticationService,
-    public apiService: ApiService,
-  ) {
-    this.env = environment;
-    this.form = this.formBuilder.group({
-      title: [''],
-      body: [''],
-    });
-  }
-
-  async ngOnInit() {
-    await this.authenticationService.checkLogin();
-    if (this.authenticationService.isAuthenticated) {
-      this.getAccount();
-    }
-    this.route.paramMap.subscribe(params => {
-      this.groupId = params.get('id');
-    });
-  }
-
-  getAccount() {
-    this.apiService.getAccount().subscribe(res => {
-      this.userAccount = res;
-    });
   }
 
   post() {
