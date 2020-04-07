@@ -52,7 +52,7 @@ export class ApiService {
   }
 
   createAccount() {
-    return this.httpClient.post<any>(`${this.apiUrl}/accounts`, '');
+    return this.httpClient.post<any>(`${this.apiUrl}/accounts`, account, {observe: 'response'});
   }
 
   getAccountLandlords() {
@@ -93,7 +93,7 @@ export class ApiService {
   }
 
   createGroup() {
-    return this.httpClient.post<any>(`${this.apiUrl}/groups`, '');
+    return this.httpClient.post<any>(`${this.apiUrl}/groups`, group, {observe: 'response'});
   }
 
 
@@ -106,7 +106,7 @@ export class ApiService {
   }
 
   createPost(groupId) {
-     return this.httpClient.post<any>(`${this.apiUrl}/groups/${groupId}/posts`, '');
+     return this.httpClient.post<any>(`${this.apiUrl}/groups/${groupId}/posts`, post, {observe: 'response'});
   }
 
 
@@ -123,6 +123,6 @@ export class ApiService {
   }
 
   createComment(postId) {
-     return this.httpClient.post<any>(`${this.apiUrl}/posts/${postId}/comment`, '');
+     return this.httpClient.post<any>(`${this.apiUrl}/posts/${postId}/comment`, comment, {observe: 'response'});
   }
 }
