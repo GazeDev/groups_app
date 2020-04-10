@@ -52,7 +52,7 @@ export class ApiService {
   }
 
   createAccount() {
-    return this.httpClient.post<any>(`${this.apiUrl}/accounts`);
+    return this.httpClient.post<any>(`${this.apiUrl}/accounts`, '');
   }
 
   getAccountLandlords() {
