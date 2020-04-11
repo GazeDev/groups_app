@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Property } from '_models/property.model';
 import { Landlord } from '_models/landlord.model';
+// import { Group } from '_models/group.model';
 import { emptyish } from '_helpers/emptyish';
 
 
@@ -27,6 +28,7 @@ export class ApiService {
     return this.apiUrl;
   }
 
+
   /*
   * Backend Status
   */
@@ -34,6 +36,7 @@ export class ApiService {
   checkStatus() {
     return this.httpClient.get<any>(`${this.apiUrl}/`);
   }
+
 
   /*
   * Account Methods
@@ -64,4 +67,62 @@ export class ApiService {
     return this.httpClient.get<any>(`${this.apiUrl}/accounts/reviews`);
   }
 
+
+  /*
+  * Group Methods
+  */
+
+  getGroups() {
+    return this.httpClient.get<any>(`${this.apiUrl}/groups`);
+  }
+
+  getGroup(groupId) {
+    return this.httpClient.get<any>(`${this.apiUrl}/groups/${groupId}`);
+  }
+
+  createGroup(group) {
+    return this.httpClient.post<any>(`${this.apiUrl}/groups`, group);
+  }
+
+
+  /*
+  * Post Methods
+  */
+
+  getPosts() {
+    return this.httpClient.get<any>(`${this.apiUrl}/posts`);
+  }
+
+  getPost(postId) {
+    return this.httpClient.get<any>(`${this.apiUrl}/posts/${postId}`);
+  }
+
+  getGroupPosts(groupId) {
+    return this.httpClient.get<any>(`${this.apiUrl}/groups/${groupId}/posts`);
+  }
+
+  createPost(groupId, post) {
+     return this.httpClient.post<any>(`${this.apiUrl}/groups/${groupId}/posts`, post);
+  }
+
+
+  /*
+  * Comment Methods
+  */
+
+  getComments() {
+    return this.httpClient.get<any>(`${this.apiUrl}/comments`);
+  }
+
+  getComment(commentId) {
+    return this.httpClient.get<any>(`${this.apiUrl}/comments/${commentId}`);
+  }
+
+  getPostComments(postId) {
+    return this.httpClient.get<any>(`${this.apiUrl}/posts/${postId}/comments`);
+  }
+
+  createComment(postId, comment) {
+     return this.httpClient.post<any>(`${this.apiUrl}/posts/${postId}/comment`, comment);
+  }
 }
