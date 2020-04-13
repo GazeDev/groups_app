@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Property } from '_models/property.model';
 import { Landlord } from '_models/landlord.model';
-import { Group } from '_models/group.model';
+// import { Group } from '_models/group.model';
 import { emptyish } from '_helpers/emptyish';
 
 
@@ -111,19 +111,7 @@ export class ApiService {
   */
 
   getComments() {
-    let params = {};
-    for (var key in options) {
-      if (
-        emptyish(options[key])
-        || options[key] == undefined
-      ) {
-        continue;
-      }
-      params[key] = options[key];
-    }
-    return this.httpClient.get<any>(`${this.apiUrl}/comments`, {
-      params: params,
-    });
+    return this.httpClient.get<any>(`${this.apiUrl}/comments`);
   }
 
   getComment(commentId) {
