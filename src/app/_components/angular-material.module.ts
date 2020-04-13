@@ -21,9 +21,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { ActionSnackBarComponent } from './action-snack-bar/action-snack-bar';
 
+import { PostCardComponent } from './post-card/post-card';
+
 @NgModule({
   declarations: [
     ActionSnackBarComponent,
+    PostCardComponent,
   ],
   imports: [
     MatAutocompleteModule,
@@ -41,7 +44,10 @@ import { ActionSnackBarComponent } from './action-snack-bar/action-snack-bar';
     MatToolbarModule,
     CommonModule,
     RouterModule.forChild([
-
+      {
+        path: 'post-card',
+        component: PostCardComponent,
+      },
     ])
   ],
   exports: [
@@ -59,6 +65,7 @@ import { ActionSnackBarComponent } from './action-snack-bar/action-snack-bar';
     MatSnackBarModule,
     MatToolbarModule,
     ActionSnackBarComponent,
+    PostCardComponent
   ],
 })
 export class AngularMaterialModule {}

@@ -24,11 +24,15 @@ export class GroupPage {
   @ViewChild('ngFormDirective') formDirective;
   public form: FormGroup;
   public env: any;
+  public group: any;
+  public posts: any;
+  public groupId: string;
   public groups: any = [];
   name: string;
   description: string;
 
   constructor(
+    private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     public dialog: MatDialog,
     public authService: AuthenticationService,
@@ -41,6 +45,9 @@ export class GroupPage {
       body: [''],
     });
 
+    this.group = <Group>{};
+    this.posts = [];
+
     // Gets the group from the API and assigned them to this.groups
     this.apiService.getGroups().subscribe( res => {
       this.groups = res;
@@ -48,6 +55,34 @@ export class GroupPage {
     err => {
       console.log('err', err);
     });
+  }
+
+  async ngOnInit() {
+    // await this.authenticationService.checkLogin();
+    // if (this.authenticationService.isAuthenticated) {
+    //   this.getAccount();
+    // }
+
+    this.route.paramMap.subscribe(params => {
+      this.groupId = params.get('id');
+      this.getGroup();
+      this.getPosts();
+    });
+  }
+
+  getGroup() {
+    this.apiService.getGroup(this.groupId).subscribe(res => {
+      this.group = res;
+    },
+    err => {
+      console.log(err);
+    })
+  }
+
+  getPosts() {
+    this.apiService.getGroupPosts(this.groupId).subscribe(res => {
+      this.posts = res;
+    })
   }
 
   openDialog(): void {
@@ -69,12 +104,7 @@ export class GroupPage {
   post() {
     let formValues = this.form.value;
     let post = this.postMapLocalToApi(formValues);
-    this.apiService.getAccount().subscribe(
-      response => {
-        post.Author = response.id;
-        this.createPost(post);
-      },
-    );
+    this.createPost(post);
   }
 
   postMapLocalToApi(formValues) {
@@ -85,7 +115,8 @@ export class GroupPage {
   }
 
   createPost(post) {
-    this.apiService.createPost(post, 2).subscribe(
+    console.log(post);
+    this.apiService.createPost(post, this.groupId).subscribe(
       postResponse => {
         let postId = postResponse.id;
         this.displayPostCreatedToast(postId);

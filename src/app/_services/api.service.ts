@@ -138,7 +138,7 @@ export class ApiService {
   * Comment Methods
   */
 
-  getComments() {
+  getComments(options = {}) {
     let params = {};
     for (var key in options) {
       if (

@@ -18,7 +18,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatDialogModule,
     RouterModule.forChild([
       {
-        path: 'group',
+        path: 'group/:id',
         component: GroupPage,
       }
     ])
