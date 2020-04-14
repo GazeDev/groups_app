@@ -17,7 +17,7 @@
   <mat-sidenav-content id="main-container">
     <h2>{{ group?.title }}</h2>
     <div class="example-container">
-      <form (submit)="post()" [formGroup]="form" #ngFormDirective="ngForm" [ngClass]="{'submit-attempt': submitAttempt}">
+      <form (submit)="post()" [formGroup]="form" #ngFormDirective="ngForm">
         <mat-form-field appearance="fill">
           <mat-label>Title</mat-label>
           <input matInput formControlName="title">
