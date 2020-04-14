@@ -73,20 +73,8 @@ export class ApiService {
   * Group Methods
   */
 
-  getGroups(options ={}) {
-    let params = {};
-    for (var key in options) {
-      if (
-        emptyish(options[key])
-        || options[key] == undefined
-      ) {
-        continue;
-      }
-      params[key] = options[key];
-    }
-    return this.httpClient.get<any>(`${this.apiUrl}/groups`, {
-      params: params,
-    });
+  getGroups() {
+    return this.httpClient.get<any>(`${this.apiUrl}/groups`);
   }
 
   getGroup(groupId) {
@@ -126,10 +114,6 @@ export class ApiService {
     return this.httpClient.get<any>(`${this.apiUrl}/groups/${groupId}/posts`);
   }
 
-  // createPost(groupId) {
-  //    return this.httpClient.post<any>(`${this.apiUrl}/groups/${groupId}/posts`, '');
-  // }
-
   createPost(post: Post, groupId: any) {
     return this.httpClient.post<Post>(`${this.apiUrl}/groups/${groupId}/posts`, post);
   }
@@ -162,7 +146,7 @@ export class ApiService {
     return this.httpClient.get<any>(`${this.apiUrl}/posts/${postId}/comments`);
   }
 
-  createComment(postId) {
-     return this.httpClient.post<any>(`${this.apiUrl}/posts/${postId}/comment`, '');
+  createComment(postId, comment) {
+     return this.httpClient.post<any>(`${this.apiUrl}/posts/${postId}/comment`, comment);
   }
 }
