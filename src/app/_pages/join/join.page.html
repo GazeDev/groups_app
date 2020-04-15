@@ -4,12 +4,12 @@
     </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-selection-list #groups cols="4" rowHeight="2:1" class="group-selection hide-checkbox">
-    <mat-list-option *ngFor="let group of joinGroups">
+<mat-selection-list #groups cols="4" rowHeight="2:1" class="group-selection hide-checkbox " [(ngModel)]="selectedOptions" (ngModelChange)="onSelection($event)">
+    <mat-list-option *ngFor="let group of joinGroups" [value]="group">
       {{group.title}}
     </mat-list-option>
 </mat-selection-list>
 
 <div class="join-groups-button">
-  <button mat-raised-button color="primary">Join Groups</button>
+  <button mat-raised-button (click)="joinSelectedGroups()" color="primary">Join Groups</button>
 </div>
