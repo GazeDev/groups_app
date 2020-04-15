@@ -11,19 +11,17 @@ export class JoinPage {
   public joinGroups: Group[] = [];
   public selectedOptions: Group[] = [];
   public userAccount: any;
+  public currentGroups: any = [];
+
   constructor(
     private apiService: ApiService,
   ) {
-
-    this.apiService.getGroups().subscribe(res => {
-      this.joinGroups = res;
-    },
-    err => {
-      console.log('err', err);
-    });
+    this.getAccount();
+    this.getJoinGroups();
   }
 
   ngOnInit() {
+    this.getJoinGroups();
   }
 
   onSelection(e, v) {
@@ -32,17 +30,14 @@ export class JoinPage {
   }
 
   joinSelectedGroups(e, v) {
-    this.getAccount();
-
     for (var group of this.selectedOptions) {
-      console.log(group);
-
       let accountGroup = {
         "GroupId": group.id,
-        "AccountId": this.userAccount
+        "AccountId": this.userAccount.id
       }
       this.apiService.createAccountGroup(group.id, accountGroup).subscribe(res => {
         console.log("success");
+        this.getJoinGroups();
       },
       err => {
         console.log('err', err);
@@ -54,6 +49,24 @@ export class JoinPage {
     this.apiService.getAccount().subscribe(res => {
       this.userAccount = res;
     });
-    console.log(this.userAccount);
+  }
+
+  getJoinGroups() {
+    this.apiService.getGroups().subscribe(res => {
+      this.joinGroups = res;
+      // Filter out groups a user is already a part of.
+      this.apiService.getAccountGroups(this.userAccount.id).subscribe(res => {
+        this.currentGroups = res;
+
+        // Remove from join Groups
+        this.joinGroups = this.joinGroups.filter(x => !this.currentGroups.map(g => g.GroupId).includes(x.id));
+      },
+      err => {
+        console.log('err', err);
+      });
+    },
+    err => {
+      console.log('err', err);
+    });
   }
 }

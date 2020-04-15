@@ -44,6 +44,8 @@ export class ApiService {
   */
 
   getAccount(observeResponse: boolean = false) {
+    console.log("in getAccount");
+    console.log(observeResponse);
     if (observeResponse) {
       return this.httpClient.get<any>(`${this.apiUrl}/accounts`, {observe: 'response'});
     } else {
@@ -81,6 +83,9 @@ export class ApiService {
   return this.httpClient.post<any>(`${this.apiUrl}/accountgroup/group/${groupId}`, accountGroup);
  }
 
+ getAccountGroups(accountId) {
+  return this.httpClient.get<any>(`${this.apiUrl}/accountgroup/account/${accountId}`);
+ }
 
   /*
   * Post Methods
