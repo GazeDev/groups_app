@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from '_services/api.service';
+import { Group } from '_models/group.model';
 
 @Component({
   selector: 'join-page',
@@ -7,15 +8,20 @@ import { ApiService } from '_services/api.service';
   styleUrls: ['join.page.scss'],
 })
 export class JoinPage {
-  public housingGroups: string[] = ['Pittsburgh', 'Oakland', 'Shadyside', 'Squirrel Hill', 'Lawrenceville', 'Southside', 'East Liberty', 'Strip District', 'Mount Washington', 'Downtown', 'Duquesne Heights'];
+  public joinGroups: Group[] = [];
   constructor(
     private apiService: ApiService,
   ) {
 
+    this.apiService.getGroups().subscribe(res => {
+      this.joinGroups = res;
+    },
+    err => {
+      console.log('err', err);
+    });
   }
 
   ngOnInit() {
-
   }
 
 }
