@@ -6,7 +6,7 @@ import { Group } from '_models/group.model';
 import { Post } from '_models/post.model';
 import { AlertService } from '_services/alert.service';
 import { environment } from '_environment';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialogModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 export interface DialogData {

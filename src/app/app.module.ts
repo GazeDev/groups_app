@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouteReuseStrategy } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import {MatDialogModule} from '@angular/material';
 
-
-import { AppComponent } from './app.component';
+import { AppComponent, CreateGroupDialog } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -22,10 +23,10 @@ import { initializer } from '_utils/app-init';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent, CreateGroupDialog,
   ],
   entryComponents: [
-    ActionSnackBarComponent,
+    ActionSnackBarComponent, CreateGroupDialog,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +36,8 @@ import { initializer } from '_utils/app-init';
     HttpClientModule,
     ReactiveFormsModule,
     KeycloakAngularModule,
+    FormsModule,
+    MatDialogModule,
   ],
   providers: [
     // AuthGuard,

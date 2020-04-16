@@ -11,11 +11,10 @@
       <mat-divider></mat-divider>
       <h3 mat-subheader>Manage Groups and Membership</h3>
       <a mat-list-item routerLink="/join" *ngIf="authService.isAuthenticated">Join Groups</a>
+      <a mat-list-item (click)="openDialog()" *ngIf="authService.isAuthenticated">Create a Group</a>
       <mat-divider></mat-divider>
       <h3 mat-subheader>My Groups</h3>
-      <mat-list-item *ngFor="let group of userGroups">
-        <a [routerLink]="['/group', group.id]">{{group.title}}</a>
-      </mat-list-item>
+      <a mat-list-item *ngFor="let group of userGroups" [routerLink]="['/group', group.id]">{{group.title}}</a>
       <mat-divider></mat-divider>
       <h3 mat-subheader>Account Information</h3>
       <a mat-list-item routerLink="#" *ngIf="authService.isAuthenticated" (click)="accountManagement()">My Account</a>
