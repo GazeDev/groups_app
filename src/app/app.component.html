@@ -8,13 +8,19 @@
       </mat-toolbar-row>
     </mat-toolbar>
     <mat-nav-list (click)="sidenav.close()">
-      <a mat-list-item routerLink="/dashboard" *ngIf="authService.isAuthenticated">Dashboard</a>
+      <mat-divider></mat-divider>
+      <h3 mat-subheader>Manage Groups and Membership</h3>
       <a mat-list-item routerLink="/join" *ngIf="authService.isAuthenticated">Join Groups</a>
       <mat-divider></mat-divider>
+      <h3 mat-subheader>My Groups</h3>
+      <mat-list-item *ngFor="let group of currentGroups">
+        <a>{{group.title}}</a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <h3 mat-subheader>Account Information</h3>
       <a mat-list-item routerLink="#" *ngIf="authService.isAuthenticated" (click)="accountManagement()">My Account</a>
       <a mat-list-item routerLink="#" *ngIf="authService.isAuthenticated" (click)="doLogout()">Log out</a>
       <a mat-list-item routerLink="#" *ngIf="!authService.isAuthenticated" (click)="doLogin()">Log in/Sign up</a>
-      <a mat-list-item routerLink="/group" *ngIf="authService.isAuthenticated">My groups</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content role="main">

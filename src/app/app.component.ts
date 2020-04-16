@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { environment } from '_environment';
 import { AuthenticationService } from '_services/index';
 import { ApiService } from '_services/api.service';
+import { Group } from '_models/group.model';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,9 @@ import { ApiService } from '_services/api.service';
 })
 export class AppComponent {
   public env: any = environment;
+  public userAccountGroups: any = [];
+  public userGroups: Group[] = [];
+  public userAccount: any;
 
   constructor(
     private apiService: ApiService,
@@ -17,6 +21,8 @@ export class AppComponent {
   ) {
     this.initializeApp();
     this.apiService.setUrl(environment.apiURL);
+    this.getAccount();
+    this.getUserGroups();
   }
 
   async initializeApp() {
@@ -33,5 +39,26 @@ export class AppComponent {
 
   async accountManagement() {
     await this.authService.account();
+  }
+
+  getAccount() {
+    this.apiService.getAccount().subscribe(res => {
+      this.userAccount = res;
+    });
+  }
+
+  getUserGroups() {
+    this.apiService.getGroups().subscribe(res => {
+      this.apiService.getAccountGroups(this.userAccount.id).subscribe(res => {
+        this.userAccountGroups = res;
+        for (var group of this.userAccountGroups) {
+          console.log("group:");
+          console.log(group);
+        }
+      },
+      err => {
+        console.log('err', err);
+      });
+    });
   }
 }
