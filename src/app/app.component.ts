@@ -31,7 +31,6 @@ export class AppComponent {
   ) {
     this.initializeApp();
     this.apiService.setUrl(environment.apiURL);
-    this.getAccount();
     this.getUserGroups();
   }
 
@@ -70,6 +69,7 @@ export class AppComponent {
   }
 
   getUserGroups() {
+    this.getAccount();
     this.apiService.getGroups().subscribe(res => {
       this.apiService.getAccountGroups(this.userAccount.id).subscribe(res => {
         this.userAccountGroups = res;
