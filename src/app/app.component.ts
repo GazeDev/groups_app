@@ -54,6 +54,12 @@ export class AppComponent {
         for (var group of this.userAccountGroups) {
           console.log("group:");
           console.log(group);
+          this.apiService.getGroup(group.GroupId).subscribe(res => {
+            this.userGroups.push(res);
+          },
+          err => {
+            console.log(err);
+          })
         }
       },
       err => {

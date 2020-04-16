@@ -13,8 +13,8 @@
       <a mat-list-item routerLink="/join" *ngIf="authService.isAuthenticated">Join Groups</a>
       <mat-divider></mat-divider>
       <h3 mat-subheader>My Groups</h3>
-      <mat-list-item *ngFor="let group of currentGroups">
-        <a>{{group.title}}</a>
+      <mat-list-item *ngFor="let group of userGroups">
+        <a [routerLink]="['/group', group.id]">{{group.title}}</a>
       </mat-list-item>
       <mat-divider></mat-divider>
       <h3 mat-subheader>Account Information</h3>
