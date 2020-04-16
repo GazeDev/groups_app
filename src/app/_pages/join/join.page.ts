@@ -24,12 +24,7 @@ export class JoinPage {
     this.getJoinGroups();
   }
 
-  onSelection(e, v) {
-    console.log(e);
-    console.log(v);    
-  }
-
-  joinSelectedGroups(e, v) {
+  joinSelectedGroups() {
     for (var group of this.selectedOptions) {
       let accountGroup = {
         "GroupId": group.id,
@@ -53,13 +48,13 @@ export class JoinPage {
 
   getJoinGroups() {
     this.apiService.getGroups().subscribe(res => {
-      this.joinGroups = res;
+      var allGroups = res;
       // Filter out groups a user is already a part of.
       this.apiService.getAccountGroups(this.userAccount.id).subscribe(res => {
         this.currentGroups = res;
 
         // Remove from join Groups
-        this.joinGroups = this.joinGroups.filter(x => !this.currentGroups.map(g => g.GroupId).includes(x.id));
+        this.joinGroups = allGroups.filter(x => !this.currentGroups.map(g => g.GroupId).includes(x.id));
       },
       err => {
         console.log('err', err);
