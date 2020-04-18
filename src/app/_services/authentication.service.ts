@@ -6,6 +6,8 @@ import { KeycloakService } from 'keycloak-angular';
 import { ApiService } from '_services/api.service';
 import { AlertService } from './alert.service';
 
+import { AlertAccount } from './alertaccount';
+
 @Injectable()
 export class AuthenticationService {
 
@@ -18,6 +20,9 @@ export class AuthenticationService {
       private keycloakService: KeycloakService,
       private apiService: ApiService,
       private alertService: AlertService,
+      private actionBar: AlertService,
+      private anotherBar: AlertAccount,
+
     ) {
       this.isAuthenticated = false;
     }
@@ -33,7 +38,9 @@ export class AuthenticationService {
             if (error.status === 404) {
               this.apiService.createAccount().subscribe(
                 async success => {
-                  this.alertService.success('We have created an account for you. Welcome!');
+                  console.log("hello it here at least");
+                  this.anotherBar.success('We have created an account for you. Welcome!');
+                  // this.anotherBar.success('We have created an account for you. Welcome!');
                 },
                 error => {
                   console.log("Error when calling createAccount(): ", error)
@@ -47,6 +54,8 @@ export class AuthenticationService {
 
     async checkLogin() {
       this.isAuthenticated = await this.keycloakService.isLoggedIn();
+      this.anotherBar.action();
+
     }
 
     async getUserInfo() {

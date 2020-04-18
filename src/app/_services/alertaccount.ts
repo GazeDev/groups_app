@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActionSnackBarComponent } from '_components/action-snack-bar/action-snack-bar';
 import { SnackBarModalComponent } from '_components/action-snack-bar-with-modal/snack-bar-component-example';
 
 @Injectable()
-export class AlertService {
+export class AlertAccount {
 
     constructor(
       private snackBar: MatSnackBar,
@@ -13,7 +12,7 @@ export class AlertService {
     }
 
     action(config: any) {
-      this.snackBar.openFromComponent(ActionSnackBarComponent, config);
+      this.snackBar.openFromComponent(SnackBarModalComponent, config);
     }
 
     success(message: string) {
