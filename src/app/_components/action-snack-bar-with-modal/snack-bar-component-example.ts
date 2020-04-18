@@ -55,8 +55,7 @@ export class SnackBarModalComponent {
 
 
 export interface DialogData {
-  animal: string;
-  name: string;
+  username: string;
 }
 
 
