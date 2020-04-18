@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ActionSnackData } from '_models/action-snack';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
+import { Account } from '_models/group.account';
 
 
 @Component({
@@ -69,20 +70,20 @@ export class DialogOverviewExampleDialog {
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
-  // submit() {
-  //    let group: Group = {};
-  //
-  //    group['title'] = this.data.title;
-  //    group['short_description'] = this.data.short_description;
-  //    group['description'] = this.data.description;
-  //
-  //    this.apiService.getAccount().subscribe(
-  //      response => {
-  //        group['AdminId'] = response.id;
-  //        this.createGroup(group);
-  //      },
-  //    );
-  //  }
+  submit() {
+     let data: Account = {};
+
+     group['username'] = this.data.title;
+     group['short_description'] = this.data.short_description;
+     group['description'] = this.data.description;
+
+     this.apiService.getAccount().subscribe(
+       response => {
+         group['AdminId'] = response.id;
+         this.createGroup(group);
+       },
+     );
+   }
 
   onNoClick(): void {
     this.dialogRef.close();

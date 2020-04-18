@@ -47,7 +47,6 @@ export class ApiService {
     } else {
       return this.httpClient.get<any>(`${this.apiUrl}/accounts`);
     }
-
   }
 
   createAccount() {
