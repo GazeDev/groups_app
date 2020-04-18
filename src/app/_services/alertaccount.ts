@@ -11,24 +11,16 @@ export class AlertAccount {
 
     }
 
-    action(config: any) {
-      this.snackBar.openFromComponent(SnackBarModalComponent, config);
+    action() {
+      this.snackBar.openFromComponent(SnackBarModalComponent, {});
     }
 
-    success(message: string) {
-      this.action({
-        data: {
-          message: message,
-        }
-      });
+    success() {
+
     }
 
     error(message: string) {
-      this.action({
-        data: {
-          message: message,
-        }
-      });
+      
     }
 
 }

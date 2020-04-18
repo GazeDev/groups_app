@@ -18,7 +18,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ActionSnackBarComponent } from './action-snack-bar/action-snack-bar';
 import { SnackBarModalComponent } from '_components/action-snack-bar-with-modal/snack-bar-component-example';
@@ -60,7 +59,6 @@ import { PostCardComponent } from './post-card/post-card';
   ],
   exports: [
     FormsModule,
-    MatInputModule,
     DialogOverviewExampleDialog,
     MatDialogModule,
     MatAutocompleteModule,

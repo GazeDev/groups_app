@@ -33,14 +33,16 @@ export class AuthenticationService {
         await this.getUserInfo();
         let observeResponse = true;
         this.apiService.getAccount(observeResponse).subscribe(
-          response => {},
+          response => {
+            console.log("not the first time account is created");
+            this.anotherBar.action();
+          },
           error => {
             if (error.status === 404) {
               this.apiService.createAccount().subscribe(
                 async success => {
                   console.log("hello it here at least");
-                  this.anotherBar.success('We have created an account for you. Welcome!');
-                  // this.anotherBar.success('We have created an account for you. Welcome!');
+                  this.anotherBar.action();
                 },
                 error => {
                   console.log("Error when calling createAccount(): ", error)
@@ -54,7 +56,6 @@ export class AuthenticationService {
 
     async checkLogin() {
       this.isAuthenticated = await this.keycloakService.isLoggedIn();
-      this.anotherBar.action();
 
     }
 
