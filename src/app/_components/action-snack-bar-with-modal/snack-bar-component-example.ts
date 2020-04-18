@@ -54,7 +54,6 @@ export class SnackBarModalComponent {
 }
 
 
-
 export interface DialogData {
   username: string;
 }
@@ -71,16 +70,14 @@ export class DialogOverviewExampleDialog {
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   submit() {
-     let data: Account = {};
+     let account: Account = {};
 
-     group['username'] = this.data.title;
-     group['short_description'] = this.data.short_description;
-     group['description'] = this.data.description;
+     account['username'] = this.data.username;
 
      this.apiService.getAccount().subscribe(
        response => {
-         group['AdminId'] = response.id;
-         this.createGroup(group);
+         account['id'] = response.id;
+         console.log(this.patchAccount(account['id'], account));
        },
      );
    }

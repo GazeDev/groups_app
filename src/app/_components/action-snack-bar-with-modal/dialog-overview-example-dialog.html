@@ -6,5 +6,5 @@
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="data.username" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="submit()" [mat-dialog-close]="data.username" cdkFocusInitial>Ok</button>
 </div>
