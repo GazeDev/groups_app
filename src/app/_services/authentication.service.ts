@@ -32,10 +32,11 @@ export class AuthenticationService {
       if (this.isAuthenticated) {
         await this.getUserInfo();
         let observeResponse = true;
-        this.apiService.getAccount(observeResponse).subscribe(
+        this.apiService.getCurrentAccount().subscribe(
           response => {
-            console.log("not the first time account is created");
-            this.anotherBar.action();
+            if (response.username == null) {
+              this.anotherBar.action();
+            }
           },
           error => {
             if (error.status === 404) {

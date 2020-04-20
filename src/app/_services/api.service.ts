@@ -51,6 +51,10 @@ export class ApiService {
     }
   }
 
+  getCurrentAccount() {
+      return this.httpClient.get<any>(`${this.apiUrl}/currentAccount`);
+  }
+
   createAccount() {
     return this.httpClient.post<any>(`${this.apiUrl}/accounts`, '');
   }

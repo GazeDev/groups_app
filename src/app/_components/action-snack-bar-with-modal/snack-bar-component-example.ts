@@ -73,11 +73,11 @@ export class DialogOverviewExampleDialog {
 
      account['username'] = this.data.username;
 
-     this.apiService.getAccount().subscribe(
+     this.apiService.getCurrentAccount().subscribe(
        response => {
-         account['id'] = response.id;
-         this.apiService.patchAccount(account['id'], account).subscribe(response2 => {
-           console.log(response);
+
+         this.apiService.patchAccount(response.id, account).subscribe(response2 => {
+           console.log(response2);
          });
        },
      );
