@@ -184,10 +184,14 @@ export class CreateGroupDialog {
   createGroup(group): void {
     this.apiService.createGroup(group).subscribe(
       groupResponse => {
-        let groupId = groupResponse.body.id; // Unsure if we need body
-        // this.displayLandlordCreatedToast(landlordId); // Leave for later
-        // this.form.reset();
-        // this.formDirective.resetForm();
+        let groupId = groupResponse.body.id;
+        // Gets the group from the API and assigned them to this.groups
+        this.apiService.getGroups().subscribe( res => {
+          // reload groups
+        },
+        err => {
+          console.log('err', err);
+        });
       },
       // err => {
       //   if (err.status == 422) {
@@ -202,15 +206,6 @@ export class CreateGroupDialog {
   }
 
   submit() {
-   // this.currentlySubmitting = true;
-   // this.submitAttempt = true;
-
-   // if (!this.form.valid) {
-   //   console.log('form invalid!');
-   //   return;
-   // }
-
-   // let formValues = this.form.value;
    let group: Group = {};
 
    group['title'] = this.data.title;
