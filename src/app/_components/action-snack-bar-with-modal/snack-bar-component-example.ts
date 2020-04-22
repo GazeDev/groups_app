@@ -46,6 +46,8 @@ export class SnackBarModalComponent {
   dialogRef.afterClosed().subscribe(result => {
     console.log('The dialog was closed');
     this.displayName = result;
+    this._snackRef.dismiss();
+
   });
 }
 
@@ -77,7 +79,9 @@ export class DialogOverviewExampleDialog {
        response => {
 
          this.apiService.patchAccount(response.id, account).subscribe(response2 => {
-           console.log(response2);
+         console.log(response2);
+         this.dialogRef.close();
+
          });
        },
      );
