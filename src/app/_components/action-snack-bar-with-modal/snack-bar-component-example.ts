@@ -13,7 +13,7 @@ import { ApiService } from '_services/api.service';
   templateUrl: './snack-bar-component-example-snack.html',
 })
 export class SnackBarModalComponent {
-  username: string;
+  displayName: string;
 
   constructor(
     @Inject(MAT_SNACK_BAR_DATA) public data: ActionSnackData,
@@ -40,12 +40,12 @@ export class SnackBarModalComponent {
   openDialog(): void {
   const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
     width: '250px',
-    data: {username: this.username}
+    data: {displayName: this.displayName}
   });
 
   dialogRef.afterClosed().subscribe(result => {
     console.log('The dialog was closed');
-    this.username = result;
+    this.displayName = result;
   });
 }
 
@@ -53,7 +53,7 @@ export class SnackBarModalComponent {
 
 
 export interface DialogData {
-  username: string;
+  displayName: string;
 }
 
 
@@ -71,7 +71,7 @@ export class DialogOverviewExampleDialog {
   submit() {
      let account: Account = {};
 
-     account['username'] = this.data.username;
+     account['displayName'] = this.data.displayName;
 
      this.apiService.getCurrentAccount().subscribe(
        response => {

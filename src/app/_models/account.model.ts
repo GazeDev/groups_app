@@ -1,3 +1,3 @@
 export class Account {
-  username?: string;
+  displayName?: string;
 }

@@ -1,10 +1,10 @@
-<h1 mat-dialog-title>Please type your username below:</h1>
+<h1 mat-dialog-title>Please type your display name below:</h1>
 <div mat-dialog-content>
   <mat-form-field>
-    <mat-label>Username</mat-label>
-    <input matInput [(ngModel)]="data.username">
+    <mat-label>Display Name</mat-label>
+    <input matInput [(ngModel)]="data.displayName">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="submit()" [mat-dialog-close]="data.username" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="submit()" [mat-dialog-close]="data.displayName" cdkFocusInitial>Ok</button>
 </div>

@@ -52,7 +52,7 @@ export class ApiService {
   }
 
   getCurrentAccount() {
-      return this.httpClient.get<any>(`${this.apiUrl}/currentAccount`);
+      return this.httpClient.get<any>(`${this.apiUrl}/accounts`);
   }
 
   createAccount() {

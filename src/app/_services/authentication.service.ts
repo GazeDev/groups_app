@@ -34,7 +34,7 @@ export class AuthenticationService {
         let observeResponse = true;
         this.apiService.getCurrentAccount().subscribe(
           response => {
-            if (response.username == null) {
+            if (response.displayName == null) {
               this.anotherBar.action();
             }
           },
@@ -42,7 +42,6 @@ export class AuthenticationService {
             if (error.status === 404) {
               this.apiService.createAccount().subscribe(
                 async success => {
-                  console.log("hello it here at least");
                   this.anotherBar.action();
                 },
                 error => {
