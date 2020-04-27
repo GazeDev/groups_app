@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SnackBarModalComponent } from '_components/action-snack-bar-with-modal/snack-bar-component-example';
+import { AccountSnackBarModal } from '_components/account-snackbar/accountsnackbar';
 
 @Injectable()
 export class AlertAccount {
@@ -12,7 +12,7 @@ export class AlertAccount {
     }
 
     action() {
-      this.snackBar.openFromComponent(SnackBarModalComponent, {});
+      this.snackBar.openFromComponent(AccountSnackBarModal, {});
     }
 
     success() {
@@ -20,7 +20,7 @@ export class AlertAccount {
     }
 
     error(message: string) {
-      
+
     }
 
 }

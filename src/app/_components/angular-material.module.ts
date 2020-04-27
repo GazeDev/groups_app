@@ -20,16 +20,16 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ActionSnackBarComponent } from './action-snack-bar/action-snack-bar';
-import { SnackBarModalComponent } from '_components/action-snack-bar-with-modal/snack-bar-component-example';
-import { DialogOverviewExampleDialog } from '_components/action-snack-bar-with-modal/snack-bar-component-example';
+import { AccountSnackBarModal } from '_components/account-snackbar/accountsnackbar';
+import { AccountDialog } from '_components/account-snackbar/accountsnackbar';
 import { FormsModule } from '@angular/forms';
 
 import { PostCardComponent } from './post-card/post-card';
 
 @NgModule({
   declarations: [
-    DialogOverviewExampleDialog,
-    SnackBarModalComponent,
+    AccountDialog,
+    AccountSnackBarModal,
     ActionSnackBarComponent,
     PostCardComponent,
   ],
@@ -59,7 +59,7 @@ import { PostCardComponent } from './post-card/post-card';
   ],
   exports: [
     FormsModule,
-    DialogOverviewExampleDialog,
+    AccountDialog,
     MatDialogModule,
     MatAutocompleteModule,
     MatButtonModule,
@@ -75,7 +75,7 @@ import { PostCardComponent } from './post-card/post-card';
     MatSnackBarModule,
     MatToolbarModule,
     ActionSnackBarComponent,
-    SnackBarModalComponent,
+    AccountSnackBarModal,
     PostCardComponent
   ],
 })

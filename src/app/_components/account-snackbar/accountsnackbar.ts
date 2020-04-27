@@ -10,14 +10,14 @@ import { ApiService } from '_services/api.service';
 
 @Component({
   selector: 'action-snack-bar-modal',
-  templateUrl: './snack-bar-component-example-snack.html',
+  templateUrl: './accountsnackbar.html',
 })
-export class SnackBarModalComponent {
+export class AccountSnackBarModal {
   displayName: string;
 
   constructor(
     @Inject(MAT_SNACK_BAR_DATA) public data: ActionSnackData,
-    private _snackRef: MatSnackBarRef<SnackBarModalComponent>,
+    private _snackRef: MatSnackBarRef<AccountSnackBarModal>,
     private router: Router,
     public dialog: MatDialog,
     private apiService: ApiService,
@@ -38,7 +38,7 @@ export class SnackBarModalComponent {
   }
 
   openDialog(): void {
-  const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+  const dialogRef = this.dialog.open(AccountDialog, {
     width: '250px',
     data: {displayName: this.displayName}
   });
@@ -54,21 +54,21 @@ export class SnackBarModalComponent {
 }
 
 
-export interface DialogData {
+export interface AccountDialog {
   displayName: string;
 }
 
 
 @Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'dialog-overview-example-dialog.html',
+  selector: 'accountdialog',
+  templateUrl: 'accountdialog.html',
 })
-export class DialogOverviewExampleDialog {
+export class AccountDialog {
 
   constructor(
     private apiService: ApiService,
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    public dialogRef: MatDialogRef<AccountDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: AccountDialog) {}
 
   submit() {
      let account: Account = {};

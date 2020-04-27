@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActionSnackBarComponent } from '_components/action-snack-bar/action-snack-bar';
-import { SnackBarModalComponent } from '_components/action-snack-bar-with-modal/snack-bar-component-example';
+import { AccountSnackBarModal } from '_components/account-snackbar/accountsnackbar';
 
 @Injectable()
 export class AlertService {

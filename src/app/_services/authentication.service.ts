@@ -6,7 +6,7 @@ import { KeycloakService } from 'keycloak-angular';
 import { ApiService } from '_services/api.service';
 import { AlertService } from './alert.service';
 
-import { AlertAccount } from './alertaccount';
+import { AlertAccount } from './alertaccount.service';
 
 @Injectable()
 export class AuthenticationService {
