@@ -13,7 +13,7 @@ import { AlertService, AuthenticationService } from '_services/index';
 import { ActionSnackBarComponent } from '_components/action-snack-bar/action-snack-bar';
 
 import { AngularMaterialModule } from '_components/angular-material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 // import { OverlayContainer } from '@angular/cdk/overlay';
 
 import { APP_INITIALIZER } from '@angular/core';
@@ -34,6 +34,7 @@ import { initializer } from '_utils/app-init';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     KeycloakAngularModule,
   ],
   providers: [
