@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { KeycloakProfile } from 'keycloak-js';
 import { KeycloakService } from 'keycloak-angular';
 import { ApiService } from '_services/api.service';
-import { AlertService } from './alert.service';
 
 import { AlertAccount } from './alertaccount.service';
 
@@ -19,8 +18,6 @@ export class AuthenticationService {
       private http: HttpClient,
       private keycloakService: KeycloakService,
       private apiService: ApiService,
-      private alertService: AlertService,
-      private actionBar: AlertService,
       private anotherBar: AlertAccount,
 
     ) {
