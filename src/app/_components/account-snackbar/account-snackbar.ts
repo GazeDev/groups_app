@@ -10,7 +10,7 @@ import { ApiService } from '_services/api.service';
 
 @Component({
   selector: 'action-snack-bar-modal',
-  templateUrl: './accountsnackbar.html',
+  templateUrl: './account-snackbar.html',
 })
 export class AccountSnackBarModal {
   displayName: string;
@@ -61,7 +61,7 @@ export interface AccountDialog {
 
 @Component({
   selector: 'accountdialog',
-  templateUrl: 'accountdialog.html',
+  templateUrl: 'account-dialog.html',
 })
 export class AccountDialog {
 

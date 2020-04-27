@@ -20,8 +20,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ActionSnackBarComponent } from './action-snack-bar/action-snack-bar';
-import { AccountSnackBarModal } from '_components/account-snackbar/accountsnackbar';
-import { AccountDialog } from '_components/account-snackbar/accountsnackbar';
+import { AccountSnackBarModal } from '_components/account-snackbar/account-snackbar';
+import { AccountDialog } from '_components/account-snackbar/account-snackbar';
 import { FormsModule } from '@angular/forms';
 
 import { PostCardComponent } from './post-card/post-card';

@@ -11,12 +11,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor, ErrorInterceptor } from '_helpers/index';
 import { AlertService, AuthenticationService, AlertAccount } from '_services/index';
 import { ActionSnackBarComponent } from '_components/action-snack-bar/action-snack-bar';
-import { AccountSnackBarModal } from '_components/account-snackbar/accountsnackbar';
+import { AccountSnackBarModal } from '_components/account-snackbar/account-snackbar';
+import { AccountDialog } from '_components/account-snackbar/account-snackbar';
 
 import { AngularMaterialModule } from '_components/angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 // import { OverlayContainer } from '@angular/cdk/overlay';
-import { AccountDialog } from '_components/account-snackbar/accountsnackbar';
 
 import { APP_INITIALIZER } from '@angular/core';
 import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
