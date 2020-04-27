@@ -60,7 +60,7 @@ export class ApiService {
   }
 
   patchAccount(id, account: Account) {
-    return this.httpClient.patch<any>(`${this.apiUrl}/accounts/${id}`, account, {observe: 'response'});
+    return this.httpClient.patch<any>(`${this.apiUrl}/accounts/${id}`, account);
   }
 
   getAccountProperties() {
