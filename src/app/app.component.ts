@@ -3,13 +3,8 @@ import { environment } from '_environment';
 import { AuthenticationService } from '_services/index';
 import { ApiService } from '_services/api.service';
 import { Group } from '_models/group.model';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-
-export interface DialogData {
-  title: string;
-  short_description: string;
-  description: string;
-}
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CreateGroupDialog } from './_components/create-group-dialog/create-group-dialog';
 
 @Component({
   selector: 'app-root',
@@ -89,44 +84,4 @@ export class AppComponent {
       });
     });
   }
-}
-
-@Component({
-  selector: 'create-group-dialog',
-  templateUrl: 'group.page.dialog.html',
-})
-export class CreateGroupDialog {
-
-  constructor(
-    public apiService: ApiService,
-    public dialogRef: MatDialogRef<CreateGroupDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {  }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  createGroup(group): void {
-    this.apiService.createGroup(group).subscribe(
-      groupResponse => {
-        let groupId = groupResponse.body.id;
-      },
-    )
-  }
-
-  submit() {
-   let group: Group = {};
-
-   group['title'] = this.data.title;
-   group['short_description'] = this.data.short_description;
-   group['description'] = this.data.description;
-
-   this.apiService.getAccount().subscribe(
-     response => {
-       group['AdminId'] = response.id;
-       this.createGroup(group);
-     },
-   );
- }
 }
