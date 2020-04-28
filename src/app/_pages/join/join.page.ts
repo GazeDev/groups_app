@@ -16,12 +16,10 @@ export class JoinPage {
   constructor(
     private apiService: ApiService,
   ) {
-    this.getAccount();
-    this.getJoinGroups();
   }
 
   ngOnInit() {
-    this.getJoinGroups();
+    this.getAccount();
   }
 
   joinSelectedGroups() {
@@ -43,6 +41,7 @@ export class JoinPage {
   getAccount() {
     this.apiService.getAccount().subscribe(res => {
       this.userAccount = res;
+      this.getJoinGroups();
     });
   }
 
