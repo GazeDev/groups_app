@@ -82,6 +82,9 @@ export class GroupPage {
   getPosts() {
     this.apiService.getGroupPosts(this.groupId).subscribe(res => {
       this.posts = res;
+      this.posts.sort((postA, postB) => postA.createdAt < postB.createdAt)
+      console.log("got posts");
+      console.log(this.posts);
     })
   }
 
