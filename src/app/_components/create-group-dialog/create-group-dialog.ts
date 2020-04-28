@@ -25,10 +25,12 @@ export class CreateGroupDialog {
     this.dialogRef.close();
   }
 
-  createGroup(group): void {
+  createGroup(group: Group): void {
     this.apiService.createGroup(group).subscribe(
       groupResponse => {
-        let groupId = groupResponse.body.id;
+        setTimeout(function(){ // Refresh page so created group shows up in join group page automatically.
+          window.location.reload();
+        },50); 
       },
     )
   }

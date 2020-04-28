@@ -30,6 +30,10 @@ export class JoinPage {
       }
       this.apiService.createAccountGroup(group.id, accountGroup).subscribe(res => {
         this.getJoinGroups();
+        setTimeout(function(){ // Refresh page so joined group shows up on side bar automatically.
+          console.log("hello");
+          window.location.reload();
+        },50); 
       },
       err => {
         console.log('err', err);

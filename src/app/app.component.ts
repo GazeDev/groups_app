@@ -29,6 +29,10 @@ export class AppComponent {
     this.getUserGroups();
   }
 
+  ngOnInit() {
+    this.getAccount();
+  }
+
   async initializeApp() {
     await this.authService.init();
   }
@@ -48,6 +52,7 @@ export class AppComponent {
   getAccount() {
     this.apiService.getAccount().subscribe(res => {
       this.userAccount = res;
+      this.getUserGroups();
     });
   }
 
@@ -64,13 +69,10 @@ export class AppComponent {
   }
 
   getUserGroups() {
-    this.getAccount();
     this.apiService.getGroups().subscribe(res => {
       this.apiService.getAccountGroups(this.userAccount.id).subscribe(res => {
         this.userAccountGroups = res;
         for (var group of this.userAccountGroups) {
-          console.log("group:");
-          console.log(group);
           this.apiService.getGroup(group.GroupId).subscribe(res => {
             this.userGroups.push(res);
           },
