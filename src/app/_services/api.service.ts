@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Group } from '_models/group.model';
+import { Account } from '_models/account.model';
 
-import { Property } from '_models/property.model';
-import { Landlord } from '_models/landlord.model';
-// import { Group } from '_models/group.model';
 import { emptyish } from '_helpers/emptyish';
 import { Post } from '_models/post.model';
+
 
 
 @Injectable({
@@ -49,23 +49,22 @@ export class ApiService {
     } else {
       return this.httpClient.get<any>(`${this.apiUrl}/accounts`);
     }
+  }
 
+  getCurrentAccount() {
+      return this.httpClient.get<any>(`${this.apiUrl}/accounts`);
   }
 
   createAccount() {
     return this.httpClient.post<any>(`${this.apiUrl}/accounts`, '');
   }
 
-  getAccountLandlords() {
-    return this.httpClient.get<any>(`${this.apiUrl}/accounts/landlords`);
+  patchAccount(id, account: Account) {
+    return this.httpClient.patch<any>(`${this.apiUrl}/accounts/${id}`, account);
   }
 
   getAccountProperties() {
     return this.httpClient.get<any>(`${this.apiUrl}/accounts/properties`);
-  }
-
-  getAccountReviews() {
-    return this.httpClient.get<any>(`${this.apiUrl}/accounts/reviews`);
   }
 
 

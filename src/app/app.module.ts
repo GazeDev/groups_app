@@ -9,8 +9,10 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor, ErrorInterceptor } from '_helpers/index';
-import { AlertService, AuthenticationService } from '_services/index';
+import { AlertService, AuthenticationService, AlertAccount } from '_services/index';
 import { ActionSnackBarComponent } from '_components/action-snack-bar/action-snack-bar';
+import { AccountSnackBarModal } from '_components/account-snackbar/account-snackbar';
+import { AccountDialog } from '_components/account-snackbar/account-snackbar';
 
 import { AngularMaterialModule } from '_components/angular-material.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -25,6 +27,8 @@ import { initializer } from '_utils/app-init';
     AppComponent,
   ],
   entryComponents: [
+    AccountDialog,
+    AccountSnackBarModal,
     ActionSnackBarComponent,
   ],
   imports: [
@@ -39,6 +43,7 @@ import { initializer } from '_utils/app-init';
   ],
   providers: [
     // AuthGuard,
+    AlertAccount,
     AlertService,
     AuthenticationService,
     {
