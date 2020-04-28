@@ -18,17 +18,24 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
+import {MatDialogModule} from '@angular/material/dialog';
 import { ActionSnackBarComponent } from './action-snack-bar/action-snack-bar';
+import { AccountSnackBarModal } from '_components/account-snackbar/account-snackbar';
+import { AccountDialog } from '_components/account-snackbar/account-snackbar';
+import { FormsModule } from '@angular/forms';
 
 import { PostCardComponent } from './post-card/post-card';
 
 @NgModule({
   declarations: [
+    AccountDialog,
+    AccountSnackBarModal,
     ActionSnackBarComponent,
     PostCardComponent,
   ],
   imports: [
+    MatDialogModule,
+    FormsModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatCheckboxModule,
@@ -51,6 +58,9 @@ import { PostCardComponent } from './post-card/post-card';
     ])
   ],
   exports: [
+    FormsModule,
+    AccountDialog,
+    MatDialogModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatCheckboxModule,
@@ -65,6 +75,7 @@ import { PostCardComponent } from './post-card/post-card';
     MatSnackBarModule,
     MatToolbarModule,
     ActionSnackBarComponent,
+    AccountSnackBarModal,
     PostCardComponent
   ],
 })
