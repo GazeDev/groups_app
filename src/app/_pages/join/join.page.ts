@@ -29,7 +29,6 @@ export class JoinPage {
         "AccountId": this.userAccount.id
       }
       this.apiService.createAccountGroup(group.id, accountGroup).subscribe(res => {
-        console.log("success");
         this.getJoinGroups();
       },
       err => {
