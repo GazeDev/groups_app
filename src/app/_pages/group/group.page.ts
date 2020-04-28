@@ -98,8 +98,7 @@ export class GroupPage {
     console.log(post);
     this.apiService.createPost(post, this.groupId).subscribe(
       postResponse => {
-        let postId = postResponse.id;
-        this.displayPostCreatedToast(postId);
+        this.getPosts();
         this.resetForm();
       },
       postErrorResponse => {
