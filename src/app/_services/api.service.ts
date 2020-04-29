@@ -67,7 +67,6 @@ export class ApiService {
     return this.httpClient.get<any>(`${this.apiUrl}/accounts/properties`);
   }
 
-
   /*
   * Group Methods
   */
@@ -84,6 +83,17 @@ export class ApiService {
     return this.httpClient.post<any>(`${this.apiUrl}/groups`, group);
   }
 
+  /*
+  * Account Group methods
+  */
+
+ createAccountGroup(groupId, accountGroup) {
+  return this.httpClient.post<any>(`${this.apiUrl}/accountgroup/group/${groupId}`, accountGroup);
+ }
+
+ getAccountGroups(accountId) {
+  return this.httpClient.get<any>(`${this.apiUrl}/accountgroup/account/${accountId}`);
+ }
 
   /*
   * Post Methods
