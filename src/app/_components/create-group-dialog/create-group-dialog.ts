@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { ApiService } from '_services/api.service';
 import { Group } from '_models/group.model';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { CreateGroupService } from '_services/create-group.service';
 
 export interface DialogData {
   title: string;
@@ -18,8 +19,9 @@ export class CreateGroupDialog {
   constructor(
     public apiService: ApiService,
     public dialogRef: MatDialogRef<CreateGroupDialog>,
+    private createGroupService: CreateGroupService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {  }
+  ) { }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -28,9 +30,7 @@ export class CreateGroupDialog {
   createGroup(group: Group): void {
     this.apiService.createGroup(group).subscribe(
       groupResponse => {
-        setTimeout(function(){ // Refresh page so created group shows up in join group page automatically.
-          window.location.reload();
-        },50); 
+        this.createGroupService.groupCreated();
       },
     )
   }

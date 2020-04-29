@@ -1,10 +1,12 @@
 import { Component, Inject } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { environment } from '_environment';
 import { AuthenticationService } from '_services/index';
 import { ApiService } from '_services/api.service';
 import { Group } from '_models/group.model';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CreateGroupDialog } from './_components/create-group-dialog/create-group-dialog';
+import { JoinGroupService } from '_services/join-group.service';
 
 @Component({
   selector: 'app-root',
@@ -18,15 +20,19 @@ export class AppComponent {
   public userAccount: any;
   name: string;
   description: string;
+  subscription: Subscription;
 
   constructor(
     private apiService: ApiService,
     public authService: AuthenticationService,
+    private joinGroupService: JoinGroupService,
     public dialog: MatDialog,
   ) {
     this.initializeApp();
     this.apiService.setUrl(environment.apiURL);
-    this.getUserGroups();
+    this.subscription = this.joinGroupService.getGroupsJoinedUpdates().subscribe(message => {
+      this.getUserGroups();
+    });
   }
 
   ngOnInit() {
@@ -63,7 +69,6 @@ export class AppComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
       this.name = result;
     });
   }
@@ -72,6 +77,7 @@ export class AppComponent {
     this.apiService.getGroups().subscribe(res => {
       this.apiService.getAccountGroups(this.userAccount.id).subscribe(res => {
         this.userAccountGroups = res;
+        this.userGroups = [];
         for (var group of this.userAccountGroups) {
           this.apiService.getGroup(group.GroupId).subscribe(res => {
             this.userGroups.push(res);

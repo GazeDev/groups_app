@@ -27,7 +27,8 @@ import { initializer } from '_utils/app-init';
 
 @NgModule({
   declarations: [
-    AppComponent, CreateGroupDialog,
+    AppComponent,
+    CreateGroupDialog,
   ],
   entryComponents: [
     ActionSnackBarComponent, 
