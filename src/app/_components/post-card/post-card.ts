@@ -38,8 +38,8 @@ export class PostCardComponent {
   }
 
   getPostAuthorDisplayName() {
-    this.apiService.getAccountById(this.post.AuthorId).subscribe(res => {
-      this.postAuthorDisplayName = res.displayName;
+    this.apiService.getAccount(this.post.AuthorId).subscribe(res => {
+      this.postAuthorDisplayName = res.body.displayName;
     })
   }
 
