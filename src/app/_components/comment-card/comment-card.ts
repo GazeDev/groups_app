@@ -2,6 +2,7 @@ import { Input, Component, ViewChild } from '@angular/core';
 import { ContentService } from '_services/index';
 import { ApiService } from '_services/api.service';
 
+
 @Component({
   selector: 'comment-card',
   templateUrl: 'comment-card.html',
@@ -14,6 +15,7 @@ export class CommentCardComponent {
   constructor (
     public content: ContentService,
     public apiService: ApiService,
+
   ) {
   }
 }
