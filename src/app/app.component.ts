@@ -35,8 +35,11 @@ export class AppComponent {
     });
   }
 
-  ngOnInit() {
-    this.getAccount();
+  async ngOnInit() {
+    await this.authService.checkLogin();
+    if (this.authService.isAuthenticated) {
+      this.getAccount();
+    }
   }
 
   async initializeApp() {

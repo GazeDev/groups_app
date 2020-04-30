@@ -22,6 +22,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ActionSnackBarComponent } from './action-snack-bar/action-snack-bar';
 import { AccountSnackBarModal } from '_components/account-snackbar/account-snackbar';
 import { AccountDialog } from '_components/account-snackbar/account-snackbar';
+import { CreateGroupDialog } from '_components/create-group-dialog/create-group-dialog';
 import { FormsModule } from '@angular/forms';
 
 import { PostCardComponent } from './post-card/post-card';
@@ -31,6 +32,7 @@ import { PostCardComponent } from './post-card/post-card';
     AccountDialog,
     AccountSnackBarModal,
     ActionSnackBarComponent,
+    CreateGroupDialog,
     PostCardComponent,
   ],
   imports: [
@@ -76,6 +78,7 @@ import { PostCardComponent } from './post-card/post-card';
     MatToolbarModule,
     ActionSnackBarComponent,
     AccountSnackBarModal,
+    CreateGroupDialog,
     PostCardComponent
   ],
 })
