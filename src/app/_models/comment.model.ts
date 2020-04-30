@@ -1,5 +1,4 @@
-export class Post {
+export class Comment {
   id?: string; // guid
-  title: string;
   body: string;
 }

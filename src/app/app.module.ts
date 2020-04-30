@@ -15,7 +15,7 @@ import { AccountSnackBarModal } from '_components/account-snackbar/account-snack
 import { AccountDialog } from '_components/account-snackbar/account-snackbar';
 
 import { AngularMaterialModule } from '_components/angular-material.module';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 // import { OverlayContainer } from '@angular/cdk/overlay';
 
 import { APP_INITIALIZER } from '@angular/core';
@@ -38,7 +38,6 @@ import { initializer } from '_utils/app-init';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule,
     KeycloakAngularModule,
   ],
   providers: [

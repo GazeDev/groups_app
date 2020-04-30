@@ -20,7 +20,6 @@ export class PostCardComponent {
   public isTarget: boolean;
 
   constructor (
-    public content: ContentService,
     public formBuilder: FormBuilder,
     public apiService: ApiService,
   ) {
@@ -38,26 +37,17 @@ export class PostCardComponent {
   getComments() {
     this.apiService.getPostComments(this.post.id).subscribe(res => {
       this.comments = res;
-      console.log(this.comments);
     })
-  }
-
-  commentMapLocalToApi(formValues) {
-    let comment: any = {};
-    comment.body = formValues.body;
-    return comment;
   }
 
   comment() {
     let formValues = this.commentForm.value;
-    let comment = this.commentMapLocalToApi(formValues);
-    this.createComment(comment);
+    this.createComment(formValues);
   }
 
   createComment(comment) {
     this.apiService.createComment(this.post.id, comment).subscribe(
       postResponse => {
-        console.log(postResponse)
         this.getComments();
         this.resetForm();
       },
