@@ -16,6 +16,7 @@ export class PostCardComponent {
   @ViewChild('ngFormDirective') formDirective;
   public commentForm: FormGroup;
 
+  public postAuthorDisplayName: any;
   public comments: any;
   public isTarget: boolean;
 
@@ -23,15 +24,23 @@ export class PostCardComponent {
     public formBuilder: FormBuilder,
     public apiService: ApiService,
   ) {
+    this.postAuthorDisplayName = "";
     this.comments = [];
   }
 
   ngOnInit() {
+    this.getPostAuthorDisplayName();
     this.getComments();
 
     this.commentForm = this.formBuilder.group({
       body: [''],
     });
+  }
+
+  getPostAuthorDisplayName() {
+    this.apiService.getAccount(this.post.AuthorId).subscribe(res => {
+      this.postAuthorDisplayName = res.body.displayName;
+    })
   }
 
   getComments() {
