@@ -22,6 +22,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ActionSnackBarComponent } from './action-snack-bar/action-snack-bar';
 import { AccountSnackBarModal } from '_components/account-snackbar/account-snackbar';
 import { AccountDialog } from '_components/account-snackbar/account-snackbar';
+import { CreateGroupDialog } from '_components/create-group-dialog/create-group-dialog';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { PostCardComponent } from './post-card/post-card';
@@ -32,6 +33,7 @@ import { CommentCardComponent } from './comment-card/comment-card';
     AccountDialog,
     AccountSnackBarModal,
     ActionSnackBarComponent,
+    CreateGroupDialog,
     PostCardComponent,
     CommentCardComponent,
   ],
@@ -86,6 +88,7 @@ import { CommentCardComponent } from './comment-card/comment-card';
     PostCardComponent,
     CommentCardComponent,
     AccountSnackBarModal,
+    CreateGroupDialog,
   ],
 })
 export class AngularMaterialModule {}

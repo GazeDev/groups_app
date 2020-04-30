@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { ApiService } from '_services/api.service';
 import { Group } from '_models/group.model';
+import { Subscription } from 'rxjs';
+import { CreateGroupService } from '_services/create-group.service';
+import { JoinGroupService } from '_services/join-group.service';
 
 @Component({
   selector: 'join-page',
@@ -12,10 +15,16 @@ export class JoinPage {
   public selectedOptions: Group[] = [];
   public userAccount: any;
   public currentGroups: any = [];
+  private subscription: Subscription;
 
   constructor(
     private apiService: ApiService,
+    private createGroupService: CreateGroupService,
+    private joinGroupService: JoinGroupService,
   ) {
+    this.subscription = this.createGroupService.getGroupCreatedUpdates().subscribe(message => {
+      this.getJoinGroups();
+    });
   }
 
   ngOnInit() {
@@ -30,6 +39,7 @@ export class JoinPage {
       }
       this.apiService.createAccountGroup(group.id, accountGroup).subscribe(res => {
         this.getJoinGroups();
+        this.joinGroupService.groupJoined();
       },
       err => {
         console.log('err', err);

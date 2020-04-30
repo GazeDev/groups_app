@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: '', loadChildren: '_pages/home/home.module#HomePageModule' },
-  { path: '', loadChildren: '_pages/dashboard/dashboard.module#DashboardPageModule' },
   { path: '', loadChildren: '_pages/group/group.module#GroupPageModule' },
   { path: '', loadChildren: '_pages/join/join.module#JoinPageModule' },
 ];

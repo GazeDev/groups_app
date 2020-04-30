@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouteReuseStrategy } from '@angular/router';
-
+import { FormsModule } from '@angular/forms';
+import {MatDialogModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +12,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor, ErrorInterceptor } from '_helpers/index';
 import { AlertService, AuthenticationService, AlertAccount } from '_services/index';
 import { ActionSnackBarComponent } from '_components/action-snack-bar/action-snack-bar';
+import { CreateGroupDialog } from '_components/create-group-dialog/create-group-dialog';
+
 import { AccountSnackBarModal } from '_components/account-snackbar/account-snackbar';
 import { AccountDialog } from '_components/account-snackbar/account-snackbar';
 
@@ -27,6 +30,8 @@ import { initializer } from '_utils/app-init';
     AppComponent,
   ],
   entryComponents: [
+    ActionSnackBarComponent,
+    CreateGroupDialog,
     AccountDialog,
     AccountSnackBarModal,
     ActionSnackBarComponent,
@@ -39,6 +44,8 @@ import { initializer } from '_utils/app-init';
     HttpClientModule,
     ReactiveFormsModule,
     KeycloakAngularModule,
+    FormsModule,
+    MatDialogModule,
   ],
   providers: [
     // AuthGuard,
