@@ -22,9 +22,10 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ActionSnackBarComponent } from './action-snack-bar/action-snack-bar';
 import { AccountSnackBarModal } from '_components/account-snackbar/account-snackbar';
 import { AccountDialog } from '_components/account-snackbar/account-snackbar';
-import { FormsModule } from '@angular/forms';
 
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { PostCardComponent } from './post-card/post-card';
+import { CommentCardComponent } from './comment-card/comment-card';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { PostCardComponent } from './post-card/post-card';
     AccountSnackBarModal,
     ActionSnackBarComponent,
     PostCardComponent,
+    CommentCardComponent,
   ],
   imports: [
     MatDialogModule,
@@ -50,7 +52,13 @@ import { PostCardComponent } from './post-card/post-card';
     MatSnackBarModule,
     MatToolbarModule,
     CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
     RouterModule.forChild([
+      {
+        path: 'comment-card',
+        component: CommentCardComponent,
+      },
       {
         path: 'post-card',
         component: PostCardComponent,
@@ -75,8 +83,9 @@ import { PostCardComponent } from './post-card/post-card';
     MatSnackBarModule,
     MatToolbarModule,
     ActionSnackBarComponent,
+    PostCardComponent,
+    CommentCardComponent,
     AccountSnackBarModal,
-    PostCardComponent
   ],
 })
 export class AngularMaterialModule {}
