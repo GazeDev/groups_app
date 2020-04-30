@@ -51,6 +51,10 @@ export class ApiService {
     }
   }
 
+  getAccountById(accountId) {
+    return this.httpClient.get<any>(`${this.apiUrl}/accounts/${accountId}`);
+  }
+
   getCurrentAccount() {
       return this.httpClient.get<any>(`${this.apiUrl}/accounts`);
   }
