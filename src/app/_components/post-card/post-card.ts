@@ -3,7 +3,6 @@ import { ContentService } from '_services/index';
 import { ApiService } from '_services/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-
 @Component({
   selector: 'post-card',
   templateUrl: 'post-card.html',
@@ -46,7 +45,12 @@ export class PostCardComponent {
   getComments() {
     this.apiService.getPostComments(this.post.id).subscribe(res => {
       this.comments = res;
-    })
+      for (let comment of this.comments) {
+        this.apiService.getAccount(comment.AuthorId).subscribe(response => {
+          comment['displayName'] = response.body.displayName;
+        });
+      }
+    });
   }
 
   comment() {
