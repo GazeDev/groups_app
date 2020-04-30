@@ -3,3 +3,4 @@ export * from './api.service';
 export * from './authentication.service';
 export * from './content.service';
 export * from './alertaccount.service';
+export * from './create-group.service';
